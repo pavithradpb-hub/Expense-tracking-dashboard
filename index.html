@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <h1>
+            <i class="fa-solid fa-wallet"></i>
+            Expense Tracker Dashboard
+        </h1>
+
+        <button id="themeBtn" title="Toggle Dark Mode">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+    </header>
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <section class="cards">
+
+        <div class="card income">
+            <h3>Total Income</h3>
+            <h2 id="income">₹0</h2>
+        </div>
+
+        <div class="card expense">
+            <h3>Total Expense</h3>
+            <h2 id="expense">₹0</h2>
+        </div>
+
+        <div class="card balance">
+            <h3>Balance</h3>
+            <h2 id="balance">₹0</h2>
+        </div>
+
+        <div class="card budget">
+            <h3>Monthly Budget</h3>
+            <h2 id="budgetAmount">₹0</h2>
+        </div>
+
+    </section>
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+        <!-- LEFT PANEL -->
+
+        <section class="left-panel">
+
+            <h2>Add Transaction</h2>
+
+            <form id="transactionForm">
+
+                <input
+                    type="text"
+                    id="description"
+                    placeholder="Enter Description"
+                    required>
+
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Enter Amount"
+                    required>
+
+                <input
+                    type="date"
+                    id="date"
+                    required>
+
+                <select id="category">
+
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Salary">Salary</option>
+                    <option value="Others">Others</option>
+
+                </select>
+
+                <select id="type">
+
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+
+                </select>
+
+                <button type="submit">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Transaction
+                </button>
+
+            </form>
+
+            <hr>
+
+            <!-- Budget -->
+
+            <h2>Monthly Budget</h2>
+
+            <input
+                type="number"
+                id="budgetInput"
+                placeholder="Enter Monthly Budget">
+
+            <button id="saveBudget">
+                <i class="fa-solid fa-floppy-disk"></i>
+                Save Budget
+            </button>
+
+            <div class="progress-box">
+
+                <div class="progress">
+                    <div id="progressBar"></div>
+                </div>
+
+                <p id="budgetStatus">
+                    Budget Status
+                </p>
+
+            </div>
+
+            <!-- Reset Button -->
+
+            <button id="resetData">
+                <i class="fa-solid fa-trash"></i>
+                Reset All Data
+            </button>
+
+        </section>
+
+        <!-- RIGHT PANEL -->
+
+        <section class="right-panel">
+
+            <div class="toolbar">
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="🔍 Search Transaction">
+
+                <select id="filter">
+
+                    <option value="All">All</option>
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+
+                </select>
+
+            </div>
+
+            <!-- Transaction Count -->
+
+            <p id="transactionCount">
+                0 Transactions
+            </p>
+
+            <!-- Transactions Table -->
+
+            <h2>Recent Transactions</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="transactionList">
+
+                </tbody>
+
+            </table>
+
+            <!-- Charts -->
+
+            <div class="charts">
+
+                <div class="chart-card">
+
+                    <h3>Expense by Category</h3>
+
+                    <canvas id="pieChart"></canvas>
+
+                </div>
+
+                <div class="chart-card">
+
+                    <h3>Monthly Expenses</h3>
+
+                    <canvas id="barChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        Expense Tracker Dashboard © 2026
+    </p>
+
+</footer>
+
+<!-- JavaScript -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
